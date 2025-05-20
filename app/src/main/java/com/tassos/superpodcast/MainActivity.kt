@@ -3,45 +3,74 @@ package com.tassos.superpodcast
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.tassos.superpodcast.ui.theme.SUPERPODCASTTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val podcastViewModel: PodcastViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             SUPERPODCASTTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                SuperPodcastApp(podcastViewModel)
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun SuperPodcastApp(viewModel: PodcastViewModel) {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = "podcast_list"
+    ) {
+        composable("podcast_list") {
+            PodcastListScreen(
+                viewModel = viewModel,
+                onPodcastClick = { podcast ->
+                    navController.navigate("episode_list/${podcast.title}")
+                }
+            )
+        }
+
+        composable(
+            "episode_list/{podcastTitle}",
+            arguments = listOf(navArgument("podcastTitle") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val podcastTitle = backStackEntry.arguments?.getString("podcastTitle") ?: ""
+            val podcast = viewModel.podcasts.value.find { it.title == podcastTitle }
+
+            if (podcast != null) {
+                EpisodeListScreen(
+                    podcast = podcast,
+                    viewModel = viewModel,
+                    onBack = { navController.popBackStack() }
+                )
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun SuperPodcastAppPreview() {
     SUPERPODCASTTheme {
-        Greeting("Android")
+        WelcomeScreen("SuperPodcast")
     }
+}
+
+@Composable
+fun WelcomeScreen(appName: String) {
+    // Keep this for preview only
 }

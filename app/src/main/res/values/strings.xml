@@ -1,3 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SUPERPODCAST</string>
+    <string name="app_name">SuperPodcast</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Navigation strings -->
+    <string name="nav_home">Home</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_library">Library</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Podcast strings -->
+    <string name="episodes">Episodes</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="download">Download</string>
+
+    <!-- Search strings -->
+    <string name="search_podcasts">Search podcasts</string>
+    <string name="no_results">No results found</string>
+    <string name="search_hint">Enter podcast name or topic</string>
+
+    <!-- Player strings -->
+    <string name="now_playing">Now Playing</string>
+    <string name="skip_forward">Skip Forward</string>
+    <string name="skip_backward">Skip Backward</string>
+    <string name="playback_speed">Playback Speed</string>
+
+    <!-- Settings strings -->
+    <string name="auto_download">Auto Download</string>
+    <string name="download_wifi_only">Download on WiFi only</string>
+    <string name="theme_setting">Theme</string>
+    <string name="about">About</string>
+
+    <!-- Error strings -->
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_loading">Error loading content</string>
+    <string name="error_playback">Playback error occurred</string>
+    <string name="retry">Retry</string>
 </resources>

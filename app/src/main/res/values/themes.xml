@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme using standard Material theme -->
+    <style name="Theme.SuperPodCast" parent="android:Theme.Material.Light">
+        <!-- Primary brand color. -->
+        <item name="android:colorPrimary">@color/purple_500</item>
+        <item name="android:colorPrimaryDark">@color/purple_700</item>
+        <item name="android:colorAccent">@color/teal_200</item>
 
-    <style name="Theme.SUPERPODCAST" parent="android:Theme.Material.Light.NoActionBar" />
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/purple_700</item>
+
+        <!-- Customize Navigation bar color. -->
+        <item name="android:navigationBarColor">@color/purple_700</item>
+    </style>
 </resources>

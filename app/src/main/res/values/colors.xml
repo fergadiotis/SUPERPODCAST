@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Podcast app specific colors -->
+    <color name="podcast_primary">#FF1976D2</color>
+    <color name="podcast_secondary">#FF42A5F5</color>
+    <color name="podcast_background">#FFFFFFFF</color>
+    <color name="podcast_surface">#FFFFFFFF</color>
 </resources>
